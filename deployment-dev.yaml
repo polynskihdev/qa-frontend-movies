@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-movies
+  namespace: dev
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: frontend-movies
+  template:
+    metadata:
+      labels:
+        app: frontend-movies
+        version: "1.02.2"
+    spec:
+      containers:
+        - name: frontend-movies
+          image: docker.io/polynskihdev/qa-frontend-movies:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
+          envFrom:
+            - configMapRef:
+                name: qa-config
+            - secretRef:
+                name: qa-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-movies
+  namespace: dev
+spec:
+  selector:
+    app: frontend-movies
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 31300
+  type: NodePort
