@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <title>Cinescope</title>
+      <title>Polypoisk</title>
       <body className={rubik.className}>
         <QueryClientProvider client={queryClient}>
           <ToasterContext />

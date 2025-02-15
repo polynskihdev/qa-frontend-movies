@@ -5,7 +5,7 @@ import UserProfile from './components/UserProfile';
 function ProfilePage() {
   return (
     <>
-      <title>Профиль | Cinescope</title>
+      <title>Профиль | Polypoisk</title>
       <UserProfile />
     </>
   );
