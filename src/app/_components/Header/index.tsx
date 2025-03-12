@@ -15,11 +15,11 @@ function Header() {
       <div className="py-5 px-10 max-w-[1200px] mx-auto flex items-center">
         {isDashboardPage ? (
           <Link className="text-3xl" href="/dashboard">
-            Polypoisk Admin
+            Polypoisk Admin v3.00
           </Link>
         ) : (
           <Link className="text-3xl" href="/">
-            Polypoisk
+            Polypoisk v3.00
           </Link>
         )}
         <NavBar />
